@@ -135,9 +135,9 @@ module.exports = function (RED) {
         var query;
 
         if(config.searchmode === 'search') {
-          query = qs.stringify({q: question, fl: 'id,title'});
+          query = qs.stringify({q: question, fl: 'id,title,training_text,score,featureVector,ranker.confidence,url'});
         } else {
-          query = qs.stringify({q: question, ranker_id: ranker_id, fl: 'id,title'});
+          query = qs.stringify({q: question, ranker_id: ranker_id, fl: 'id,title,training_text,score,featureVector,ranker.confidence,url'});
         }
 
         solrClient.get('fcselect', query, function(err, searchResponse) {
